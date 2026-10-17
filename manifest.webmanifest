@@ -1,0 +1,17 @@
+{
+  "name": "RENACER · 90 días",
+  "short_name": "RENACER",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f2fb",
+  "theme_color": "#422b63",
+  "icons": [
+    {
+      "src": "icono-renacer.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
