@@ -9,486 +9,64 @@
 <link rel="icon" type="image/png" href="./icono-renacer.png">
 <link rel="apple-touch-icon" href="./icono-renacer.png">
 <style>
-:root{font-family:system-ui,-apple-system,sans-serif;color:#302b3d;background:#f6f2fb}
-*{box-sizing:border-box}
-body{margin:0;padding:0 0 88px}
-header{background:linear-gradient(125deg,#422b63,#8a548e);color:white;padding:25px 18px 20px}
-main{max-width:650px;margin:auto;padding:12px}
-h1{margin:0;font-size:29px} h2{font-size:19px;margin:0 0 12px} h3{font-size:16px;margin:0 0 8px}
-p{line-height:1.5} small,.muted{color:#716a7d} header small{color:#eee}
-section{background:white;border:1px solid #e9e1ef;border-radius:18px;padding:17px;margin:12px 0;box-shadow:0 2px 10px #382b4b09}
-label{display:block;font-weight:650;font-size:14px;margin:12px 0 5px}
-input,select,textarea{width:100%;padding:12px;border:1px solid #cfc4d9;border-radius:11px;background:white;font:inherit;color:#302b3d}
-textarea{min-height:74px}
-button{border:0;border-radius:12px;padding:12px 14px;background:#68417f;color:white;font-weight:700;font:inherit;cursor:pointer}
-button:disabled{opacity:.4;cursor:not-allowed}
-button.primary{font-weight:750;background:#65407c}
-button.alt{background:#f0e9f5;color:#533468}
-button.soft{background:#f6f0fa;color:#533468;border:1px solid #e1d3e8}
-button.danger{background:#a43855}
-button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #b78cd6}
-nav{position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #e5dbea;display:flex;justify-content:center;z-index:4;padding-bottom:env(safe-area-inset-bottom)}
-nav button{flex:1;max-width:130px;border-radius:0;background:white;color:#685b72;padding:12px 2px;font-size:12px}
-nav button.active{background:#f0e7f7;color:#47235e;font-weight:800}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat{padding:12px;background:#f6f0fa;border-radius:12px}
-.stat strong{display:block;font-size:24px}
-.stat small{font-size:12px}
-.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.row>*{flex:1}
-.pill{display:inline-block;border-radius:100px;background:#f0e7f7;padding:5px 10px;font-size:12px;color:#603877}
-.progress{background:#ece5f0;height:12px;border-radius:12px;overflow:hidden}
-.progress span{display:block;background:#7bba99;height:100%}
-.hide{display:none!important}
-.help{font-size:13px;color:#686171}
-.check{display:flex;gap:8px;align-items:center;font-weight:500}
-.check input{width:auto}
-.emergency{width:100%;padding:18px;background:#ad3f65;font-size:18px;font-weight:800}
-.timer{font-size:42px;text-align:center;font-weight:800;color:#6a427f;margin:14px}
-.history{padding:11px 0;border-bottom:1px solid #eee7f0;font-size:14px}
-#toast{position:fixed;bottom:76px;left:12px;right:12px;background:#352b41;color:white;padding:12px;border-radius:12px;display:none;z-index:6;max-width:600px;margin:auto}
-ul{padding-left:20px;line-height:1.6}
-.mini{font-size:12px}
-.warn{border-left:4px solid #d3a051;padding-left:10px}
-.good{border-left:4px solid #6da483;padding-left:10px}
-.datebar{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center}
-.datebar button{padding:11px 14px}
-.todaybtn{width:100%;margin-top:8px}
-.tracker{border:1px solid #eadff0;border-radius:16px;padding:14px;margin:10px 0;background:#fff}
-.tracker-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
-.tracker-title{font-weight:800}
-.target{font-size:12px;background:#f0e7f7;color:#5b376f;border-radius:100px;padding:5px 9px;white-space:nowrap}
-.bigvalue{font-size:34px;font-weight:850;line-height:1.1;margin:10px 0 4px}
-.unit{font-size:14px;font-weight:500;color:#756b7b}
-.stepper{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-.stepper.four{grid-template-columns:repeat(4,1fr)}
-.stepper button{padding:11px 8px}
-.inline-edit{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:9px}
-.inline-edit button{padding:10px 12px}
-.statusline{margin:8px 0 0;font-size:13px;line-height:1.35}
-.autosave{display:flex;align-items:center;gap:7px;font-size:13px;color:#5f765f;margin-top:8px}
-.dot{width:8px;height:8px;border-radius:50%;background:#6da483;display:inline-block}
-.source{font-size:12px;color:#6d6473;background:#f8f5fa;padding:10px;border-radius:10px;margin-top:8px}
-@media(max-width:420px){.stepper.four{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr 1fr}}
+:root{font-family:system-ui,-apple-system,sans-serif;color:#302b3d;background:#f6f2fb}*{box-sizing:border-box}body{margin:0;padding:0 0 88px}header{background:linear-gradient(125deg,#422b63,#8a548e);color:#fff;padding:25px 18px 20px}main{max-width:650px;margin:auto;padding:12px}h1{margin:0;font-size:29px}h2{font-size:19px;margin:0 0 12px}p{line-height:1.48}small,.muted{color:#716a7d}header small{color:#eee}section{background:#fff;border:1px solid #e9e1ef;border-radius:18px;padding:17px;margin:12px 0;box-shadow:0 2px 10px #382b4b09}label{display:block;font-weight:650;font-size:14px;margin:12px 0 5px}input,select,textarea{width:100%;padding:12px;border:1px solid #cfc4d9;border-radius:11px;background:#fff;font:inherit;color:#302b3d}textarea{min-height:74px}button{border:0;border-radius:12px;padding:12px 14px;background:#68417f;color:#fff;font-weight:700;font:inherit;cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}button.alt{background:#f0e9f5;color:#533468}button.soft{background:#f8f5fa;color:#533468;border:1px solid #e1d3e8}button.danger{background:#a43855}nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5dbea;display:flex;justify-content:center;z-index:4;padding-bottom:env(safe-area-inset-bottom)}nav button{flex:1;max-width:130px;border-radius:0;background:#fff;color:#685b72;padding:12px 2px;font-size:12px}nav button.active{background:#f0e7f7;color:#47235e;font-weight:800}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{padding:12px;background:#f6f0fa;border-radius:12px}.stat strong{display:block;font-size:23px}.pill{display:inline-block;border-radius:100px;background:#f0e7f7;padding:5px 10px;font-size:12px;color:#603877}.progress{background:#ece5f0;height:12px;border-radius:12px;overflow:hidden}.progress span{display:block;background:#7bba99;height:100%}.hide{display:none!important}.help{font-size:13px;color:#686171}.warn{border-left:4px solid #d3a051;padding-left:10px}.good{border-left:4px solid #6da483;padding-left:10px}.emergency{width:100%;padding:18px;background:#ad3f65;font-size:18px;font-weight:800}.datebar{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center}.datebar button{padding:11px 14px}.todaybtn{width:100%;margin-top:8px}.tracker{border:1px solid #eadff0;border-radius:16px;padding:14px;margin:10px 0}.tracker-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.tracker-title{font-weight:800}.target{font-size:12px;background:#f0e7f7;color:#5b376f;border-radius:100px;padding:5px 9px;white-space:nowrap}.bigvalue{font-size:34px;font-weight:850;line-height:1.1;margin:10px 0 4px}.unit{font-size:14px;font-weight:500;color:#756b7b}.stepper{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.stepper.four{grid-template-columns:repeat(4,1fr)}.stepper button{padding:11px 8px}.inline-edit{display:grid;grid-template-columns:1fr auto;gap:8px;margin-top:9px}.statusline{margin:8px 0 0;font-size:13px;line-height:1.35}.check{display:flex;gap:8px;align-items:center;font-weight:500}.check input{width:auto}.autosave{display:flex;align-items:center;gap:7px;font-size:13px;color:#5f765f;margin-top:8px}.dot{width:8px;height:8px;border-radius:50%;background:#6da483;display:inline-block}.meds{display:grid;gap:10px}.med{border:1px solid #e4d8eb;border-radius:15px;padding:13px;background:#fbf9fc}.med-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.med-name{font-weight:800}.med-status{font-size:12px;border-radius:100px;padding:5px 9px;background:#eee8f1;color:#64586a}.med-status.done{background:#e3f1e8;color:#365f48}.med button{width:100%;margin-top:9px}.timer{font-size:42px;text-align:center;font-weight:800;color:#6a427f;margin:14px}.history{padding:11px 0;border-bottom:1px solid #eee7f0;font-size:14px}.source{font-size:12px;color:#6d6473;background:#f8f5fa;padding:10px;border-radius:10px;margin-top:8px}#toast{position:fixed;bottom:76px;left:12px;right:12px;background:#352b41;color:#fff;padding:12px;border-radius:12px;display:none;z-index:6;max-width:600px;margin:auto}ul{padding-left:20px;line-height:1.6}@media(max-width:420px){.stepper.four{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<header>
-  <div style="max-width:650px;margin:auto">
-    <small>MI PROGRAMA PERSONAL · 90 DÍAS</small>
-    <h1>🦋 RENACER</h1>
-    <p style="margin:7px 0">Un impulso no decide por mí. Yo puedo elegir.</p>
-    <span id="daybadge" class="pill">Día 1 de 90</span>
-  </div>
-</header>
-
+<header><div style="max-width:650px;margin:auto"><small>MI PROGRAMA PERSONAL · 90 DÍAS</small><h1>🦋 RENACER</h1><p style="margin:7px 0">Hoy sigo el plan. No negocio con el impulso.</p><span id="daybadge" class="pill">Preparación</span></div></header>
 <main>
 <div id="home" class="page">
-  <section>
-    <h2>Hoy elijo cuidarme</h2>
-    <p id="phase"></p>
-    <div class="progress"><span id="bar"></span></div>
-    <p class="help" id="daytext"></p>
-    <button class="emergency" onclick="tab('sos')">🆘 Tengo un antojo ahora</button>
-  </section>
-
-  <section>
-    <h2>Fecha que estoy registrando</h2>
-    <div class="datebar">
-      <button class="alt" onclick="shiftDate(-1)" aria-label="Día anterior">←</button>
-      <input id="logDate" type="date" onchange="selectDate(this.value)">
-      <button class="alt" id="nextDate" onclick="shiftDate(1)" aria-label="Día siguiente">→</button>
-    </div>
-    <button class="soft todaybtn" onclick="goToday()">Ir a hoy</button>
-    <div class="autosave"><span class="dot"></span><span>Todo se guarda automáticamente.</span></div>
-    <p class="help">A medianoche empieza un registro nuevo. Los días anteriores siguen editables por si olvidaste anotar algo.</p>
-  </section>
-
-  <section>
-    <h2 id="registerTitle">Registro del día</h2>
-    <div id="trackers"></div>
-
-    <label class="check"><input id="chips" type="checkbox" onchange="saveChoice('chips',this.checked)"> Comí frituras este día</label>
-    <label class="check"><input id="sugar" type="checkbox" onchange="saveChoice('sugar',this.checked)"> Consumí azúcar añadida en otros productos</label>
-
-    <label>¿Cómo estuvo mi ánimo?</label>
-    <select id="mood" onchange="saveChoice('mood',this.value)">
-      <option value="">Selecciona</option><option>Tranquila</option><option>Ansiosa</option><option>Triste</option>
-      <option>Enojada</option><option>Cansada</option><option>Alegre</option>
-    </select>
-
-    <label>¿Qué me ayudó?</label>
-    <textarea id="note" placeholder="Un pequeño avance también cuenta" oninput="saveNoteDebounced()"></textarea>
-    <div class="autosave"><span class="dot"></span><span id="saveState">Guardado automático activo</span></div>
-  </section>
-
-  <section>
-    <h2>Mis metas para esta fecha</h2>
-    <div id="goals"></div>
-    <p class="help warn"><strong>Importante:</strong> cigarro y Coca-Cola son <strong>máximos, no cuotas</strong>. Si consumes menos, no tienes que “completar” lo que falta.</p>
-  </section>
-
-  <section>
-    <h2>Mi avance</h2>
-    <div class="grid" id="stats"></div>
-    <p class="help">Los totales se calculan con lo que sí registraste. Un dato imperfecto es mejor que inventarlo o borrarlo.</p>
-  </section>
+<section><h2 id="headline">Mi plan de hoy</h2><p id="phase"></p><div class="progress"><span id="bar"></span></div><p class="help" id="daytext"></p><button class="emergency" onclick="tab('sos')">🆘 Tengo un antojo ahora</button></section>
+<section id="prepBox" class="hide"><h2>🌙 Empezamos mañana</h2><p><strong>RENACER comienza el 21 de octubre de 2026.</strong> Los registros anteriores quedaron fuera de esta nueva etapa.</p><p class="help">Mañana aparecerá tu primer día con el plan limpio: cigarro 4, Coca-Cola 1,000 ml, agua 1,200 ml y sueño 6 h.</p></section>
+<section><h2>Fecha que estoy viendo</h2><div class="datebar"><button class="alt" onclick="shiftDate(-1)">←</button><input id="logDate" type="date" onchange="selectDate(this.value)"><button class="alt" id="nextDate" onclick="shiftDate(1)">→</button></div><button class="soft todaybtn" onclick="goToday()">Ir a hoy</button><div class="autosave"><span class="dot"></span><span>Todo se guarda automáticamente.</span></div></section>
+<section id="dailySection"><h2 id="registerTitle">Registro del día</h2><div id="trackers"></div>
+<h2 style="margin-top:20px">💊 ¿Ya tomé mis medicamentos?</h2><p class="help">Esto solo registra lo que tú ya tomaste. <strong>“No registrado” no significa “tómalo ahora”.</strong> Sigue la frecuencia y dosis de tu receta.</p><div id="meds" class="meds"></div>
+<label class="check"><input id="chips" type="checkbox" onchange="saveChoice('chips',this.checked)"> Comí frituras este día</label><label class="check"><input id="sugar" type="checkbox" onchange="saveChoice('sugar',this.checked)"> Consumí azúcar añadida en otros productos</label>
+<label>¿Cómo estuvo mi ánimo?</label><select id="mood" onchange="saveChoice('mood',this.value)"><option value="">Selecciona</option><option>Tranquila</option><option>Ansiosa</option><option>Triste</option><option>Enojada</option><option>Cansada</option><option>Alegre</option></select>
+<label>¿Qué me ayudó?</label><textarea id="note" placeholder="Un pequeño avance también cuenta" oninput="saveNoteDebounced()"></textarea><div class="autosave"><span class="dot"></span><span id="saveState">Guardado automático activo</span></div></section>
+<section><h2>Mi avance</h2><div class="grid" id="stats"></div></section>
 </div>
-
-<div id="sos" class="page hide">
-  <section>
-    <h2>🆘 Primeros auxilios para un antojo</h2>
-    <p><strong>No necesitas decidir ahora.</strong> Date cinco minutos. El impulso puede subir y bajar como una ola.</p>
-    <label>¿Qué estás deseando consumir?</label>
-    <select id="urgeType"><option>Cigarro</option><option>Coca-Cola</option><option>Frituras</option><option>Algo azucarado</option></select>
-    <label>Intensidad antes (0–10)</label>
-    <input type="range" min="0" max="10" value="7" id="before" oninput="$('beforeval').textContent=this.value">
-    <div class="help">Intensidad: <b id="beforeval">7</b>/10</div>
-    <label>¿Qué lo disparó?</label>
-    <select id="trigger"><option>Estrés</option><option>Aburrimiento</option><option>Tristeza</option><option>Enojo</option><option>Cansancio</option><option>Después de comer</option><option>Costumbre o rutina</option><option>Convivencia social</option><option>Otro</option></select>
-    <label>¿Qué pensamiento apareció?</label>
-    <textarea id="thought" placeholder="Ej.: Lo necesito para calmarme"></textarea>
-    <button style="width:100%" onclick="startTimer()">Iniciar pausa de 5 minutos</button>
-    <div class="timer" id="clock">05:00</div>
-    <p>1. Aléjate del estímulo. 2. Respira despacio. 3. Bebe un poco de agua si te apetece. 4. Cambia de lugar. 5. Decide de nuevo después de la pausa.</p>
-    <p class="help">Para el tabaco, el apoyo profesional y los tratamientos aprobados para la dependencia de nicotina pueden reducir la abstinencia y aumentar las probabilidades de dejarlo.</p>
-    <label>Intensidad después (0–10)</label>
-    <input id="after" type="range" min="0" max="10" value="4" oninput="$('afterval').textContent=this.value">
-    <div class="help">Intensidad: <b id="afterval">4</b>/10</div>
-    <label>¿Qué pasó?</label>
-    <select id="outcome"><option>Esperé y pasó el impulso</option><option>Lo manejé parcialmente</option><option>Consumí lo que deseaba</option><option>Seguiré esperando</option></select>
-    <button class="primary" style="width:100%;margin-top:12px" onclick="saveUrge()">Guardar este episodio</button>
-    <p class="help">Si consumiste, no reiniciamos los 90 días. Registramos lo que pasó para aprender.</p>
-  </section>
-</div>
-
-<div id="mind" class="page hide">
-  <section>
-    <h2>🧠 Reentrenar mis pensamientos</h2>
-    <p>Cuando aparezca «lo necesito», responde: <strong>«Siento el impulso, pero no es una orden. Puedo esperar cinco minutos».</strong></p>
-    <ul>
-      <li><strong>Detectar:</strong> qué emoción, lugar o momento activó el deseo.</li>
-      <li><strong>Retrasar:</strong> posponer cinco minutos antes de decidir.</li>
-      <li><strong>Cambiar el entorno:</strong> no dejar cigarros o refresco a mano cuando sea posible.</li>
-      <li><strong>No compensar:</strong> si un día fumaste o bebiste menos que el máximo, no recuperes la diferencia después.</li>
-      <li><strong>Registrar sin castigo:</strong> un tropiezo es información para ajustar el plan.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Mis episodios de antojo</h2>
-    <div id="urges"></div>
-  </section>
-
-  <section>
-    <h2>Cómo interpreta RENACER los números</h2>
-    <p><strong>Tabaco:</strong> el descenso es un tope conductual y llega a cero. No existe una fórmula universal que obligue al organismo a fumar un número exacto de cigarros antes de dejarlo. Si puedes fumar menos que el tope, mejor.</p>
-    <p><strong>Coca-Cola:</strong> baja gradualmente para hacer más llevadero reducir la cafeína habitual. El máximo nunca es una cantidad que debas terminar.</p>
-    <p><strong>Agua:</strong> es una meta práctica de agua simple. Las necesidades reales cambian con calor, actividad y alimentos.</p>
-    <p><strong>Sueño:</strong> sube poco a poco hasta un mínimo de 7 horas. La meta es dormir suficiente, no “pagar” horas perdidas durmiendo de más al día siguiente.</p>
-    <p class="help warn">RENACER es apoyo de hábitos, no sustituye atención médica. Si la abstinencia de nicotina se vuelve difícil, un médico o farmacéutico puede ayudarte a elegir tratamiento para dejar de fumar.</p>
-  </section>
-</div>
-
-<div id="plan" class="page hide">
-  <section>
-    <h2>🗓️ Ruta automática de 90 días</h2>
-    <div id="planToday"></div>
-    <p><strong>Cigarro:</strong> días 1–3 máximo 5; 4–6 máximo 4; 7–9 máximo 3; 10–11 máximo 2; 12–13 máximo 1; desde el día 14, meta 0.</p>
-    <p><strong>Coca-Cola:</strong> parte de 1,000 ml y reduce 100 ml cada 3 días hasta llegar a 0.</p>
-    <p><strong>Agua simple:</strong> 1,200 → 1,400 → 1,600 → 1,800 → 2,000 ml como meta práctica progresiva.</p>
-    <p><strong>Sueño:</strong> inicia en 6 h y sube 15 minutos cada 3 días hasta llegar a 7 h.</p>
-    <p class="help">Si espontáneamente haces menos cigarro o Coca-Cola que el máximo, no subimos para “cumplir”. Menos es avance.</p>
-
-    <label>Fecha de inicio (editable)</label>
-    <input id="startDate" type="date">
-    <button class="alt" style="width:100%;margin-top:9px" onclick="changeStart()">Actualizar inicio</button>
-    <p class="help">Cambiar el inicio mueve las metas por fecha; no borra tus registros.</p>
-  </section>
-
-  <section>
-    <h2>Base usada para el plan</h2>
-    <div class="source"><strong>Tabaco:</strong> revisiones Cochrane: reducir antes de dejarlo puede lograr tasas de abandono similares a dejarlo de golpe; apoyo conductual y tratamiento para nicotina pueden mejorar el éxito.</div>
-    <div class="source"><strong>Cafeína:</strong> FDA: si la consumes habitualmente y quieres reducirla, hacerlo gradualmente puede evitar síntomas desagradables de abstinencia.</div>
-    <div class="source"><strong>Agua:</strong> National Academies: referencia de 2.7 L/día de agua total para mujeres adultas, incluyendo alimentos y todas las bebidas; no es una obligación de beber 2.7 L de agua simple.</div>
-    <div class="source"><strong>Sueño:</strong> CDC: la mayoría de los adultos necesitan al menos 7 horas por noche.</div>
-  </section>
-
-  <section>
-    <h2>Mis registros y respaldo</h2>
-    <div id="recent"></div>
-    <div class="row" style="margin-top:12px">
-      <button class="alt" onclick="exportData()">Exportar respaldo</button>
-      <button class="alt" onclick="$('importFile').click()">Importar respaldo</button>
-    </div>
-    <input type="file" id="importFile" accept="application/json" style="display:none" onchange="importData(event)">
-    <p class="help">La información se guarda en este navegador. Si borras sus datos o cambias de celular, exporta un respaldo para no perder tus registros.</p>
-  </section>
-</div>
+<div id="sos" class="page hide"><section><h2>🆘 Primeros auxilios para un antojo</h2><p><strong>No necesitas decidir ahora.</strong> Date cinco minutos antes de actuar.</p><label>¿Qué deseas consumir?</label><select id="urgeType"><option>Cigarro</option><option>Coca-Cola</option><option>Frituras</option><option>Algo azucarado</option></select><label>Intensidad antes (0–10)</label><input type="range" min="0" max="10" value="7" id="before" oninput="$('beforeval').textContent=this.value"><div class="help">Intensidad: <b id="beforeval">7</b>/10</div><label>¿Qué lo disparó?</label><select id="trigger"><option>Estrés</option><option>Aburrimiento</option><option>Tristeza</option><option>Enojo</option><option>Cansancio</option><option>Después de comer</option><option>Costumbre o rutina</option><option>Convivencia social</option><option>Otro</option></select><label>¿Qué pensamiento apareció?</label><textarea id="thought"></textarea><button style="width:100%" onclick="startTimer()">Iniciar pausa de 5 minutos</button><div class="timer" id="clock">05:00</div><p>Aléjate del estímulo, respira despacio, cambia de lugar y vuelve a decidir cuando termine la pausa.</p><label>Intensidad después (0–10)</label><input id="after" type="range" min="0" max="10" value="4" oninput="$('afterval').textContent=this.value"><div class="help">Intensidad: <b id="afterval">4</b>/10</div><label>¿Qué pasó?</label><select id="outcome"><option>Esperé y pasó el impulso</option><option>Lo manejé parcialmente</option><option>Consumí lo que deseaba</option><option>Seguiré esperando</option></select><button style="width:100%;margin-top:12px" onclick="saveUrge()">Guardar episodio</button></section></div>
+<div id="mind" class="page hide"><section><h2>🧠 Regla de RENACER</h2><p><strong>El número del cigarro es el límite programado del día.</strong> No lo aumentamos. Si terminas con menos, no recuperas la diferencia.</p><p>Para que el descenso no sea brusco, usamos solo pasos de medio cigarro: 4 → 3½ → 3 → 2½ → 2 → 1½ → 1 → ½ → 0.</p><p class="help warn">Una fracción de cigarro es una unidad de registro conductual; no significa que media pieza entregue exactamente media nicotina. La forma de fumar puede cambiar la exposición.</p></section><section><h2>Mis episodios de antojo</h2><div id="urges"></div></section><section><h2>Medicamentos</h2><p>RENACER no cambia ni recomienda dosis de citalopram o valproato de magnesio. Solo deja una marca para evitar la duda de “¿ya me lo tomé?”. Si no estás segura y la app no tiene registro, revisa tu envase/organizador o consulta a un profesional; no uses la ausencia de marca como indicación para duplicar una toma.</p></section></div>
+<div id="plan" class="page hide"><section><h2>🗓️ Ruta automática</h2><div id="planToday"></div><p><strong>Cigarro:</strong> días 1–4: 4; 5–8: 3½; 9–12: 3; 13–16: 2½; 17–20: 2; 21–24: 1½; 25–28: 1; 29–32: ½; desde el día 33: 0.</p><p><strong>Coca-Cola:</strong> empieza en 1,000 ml y baja 100 ml cada 4 días hasta 0.</p><p><strong>Agua simple:</strong> 1,200 → 1,400 → 1,600 → 1,800 → 2,000 ml.</p><p><strong>Sueño:</strong> comienza en 6 h y suma 15 minutos cada 4 días hasta llegar a 7 h.</p><p class="help">El plan de tabaco es una estructura gradual de conducta. La evidencia apoya reducir antes de dejarlo como opción válida, pero no existe un calendario biológico exacto de medios cigarros.</p></section><section><h2>Mis registros y respaldo</h2><div id="recent"></div><div class="grid" style="margin-top:12px"><button class="alt" onclick="exportData()">Exportar</button><button class="alt" onclick="$('importFile').click()">Importar</button></div><input type="file" id="importFile" accept="application/json" style="display:none" onchange="importData(event)"></section></div>
 </main>
-
-<nav>
-  <button id="nav-home" class="active" onclick="tab('home')">🏠<br>Hoy</button>
-  <button id="nav-sos" onclick="tab('sos')">🆘<br>Antojo</button>
-  <button id="nav-mind" onclick="tab('mind')">🧠<br>Mente</button>
-  <button id="nav-plan" onclick="tab('plan')">🗓️<br>Plan</button>
-</nav>
-<div id="toast" role="status"></div>
-
+<nav><button id="nav-home" class="active" onclick="tab('home')">🏠<br>Hoy</button><button id="nav-sos" onclick="tab('sos')">🆘<br>Antojo</button><button id="nav-mind" onclick="tab('mind')">🧠<br>Mente</button><button id="nav-plan" onclick="tab('plan')">🗓️<br>Plan</button></nav><div id="toast"></div>
 <script>
-const KEY='renacer90_v2';
-const $=id=>document.getElementById(id);
-const isoDate=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-const today=()=>isoDate(new Date());
-const parseDate=s=>new Date(s+'T12:00:00');
-let data;
-try{data=JSON.parse(localStorage.getItem(KEY))||{start:'2026-10-16',days:{},urges:[]}}catch(e){data={start:'2026-10-16',days:{},urges:[]}}
-if(!data.days||typeof data.days!=='object')data.days={};
-if(!Array.isArray(data.urges))data.urges=[];
-if(!data.start)data.start='2026-10-16';
-let selectedDate=today();
-let lastToday=today();
-let noteTimer=null;
-
-function persist(){
-  try{localStorage.setItem(KEY,JSON.stringify(data));return true}
-  catch(e){alert('No se pudo guardar. Exporta tus datos o revisa el almacenamiento del navegador.');return false}
-}
+const START='2026-10-21',KEY='renacer90_v3';
+const $=id=>document.getElementById(id);const isoDate=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');const today=()=>isoDate(new Date());const parseDate=s=>new Date(s+'T12:00:00');
+localStorage.removeItem('renacer90_v2');
+let data;try{data=JSON.parse(localStorage.getItem(KEY))||{start:START,days:{},urges:[]}}catch(e){data={start:START,days:{},urges:[]}};data.start=START;if(!data.days)data.days={};if(!Array.isArray(data.urges))data.urges=[];
+let selectedDate=today()<START?START:today(),lastToday=today(),noteTimer=null;
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(data));return true}catch(e){alert('No se pudo guardar.');return false}}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function notify(s){$('toast').textContent=s;$('toast').style.display='block';clearTimeout(notify._t);notify._t=setTimeout(()=>$('toast').style.display='none',2600)}
-function dayNumber(date=today()){
-  const a=parseDate(data.start),b=parseDate(date);
-  return Math.floor((b-a)/86400000)+1;
-}
-function targets(date=selectedDate){
-  const d=Math.max(1,dayNumber(date));
-  let cigs=d<=3?5:d<=6?4:d<=9?3:d<=11?2:d<=13?1:0;
-  let cola=Math.max(0,1000-Math.floor((d-1)/3)*100);
-  let water=d<=3?1200:d<=6?1400:d<=9?1600:d<=12?1800:2000;
-  let sleep=Math.min(7,6+Math.floor((d-1)/3)*0.25);
-  let chips=d>=31?'La mayoría de los días sin frituras':d>=15?'Máximo 2 días por semana':'Observar y reducir la frecuencia';
-  return {cigs,cola,water,sleep,chips,d};
-}
-function val(key,date=selectedDate){
-  const x=data.days[date];
-  return x&&Number.isFinite(Number(x[key]))?Number(x[key]):0;
-}
-function getRecord(date=selectedDate){return data.days[date]||{}}
-function ensureRecord(date=selectedDate){
-  if(!data.days[date])data.days[date]={};
-  return data.days[date];
-}
-function setValue(key,value,date=selectedDate,quiet=false){
-  value=Number(value);
-  if(!Number.isFinite(value)||value<0)return;
-  if(key==='cigs')value=Math.round(value);
-  if(key==='sleep')value=Math.min(24,Math.round(value*4)/4);
-  if(key==='water'||key==='cola')value=Math.round(value);
-  ensureRecord(date)[key]=value;
-  if(persist()){
-    renderAll();
-    if(!quiet)notify('Guardado automáticamente 🦋');
-  }
-}
-function adjust(key,delta){
-  const next=Math.max(0,val(key)+delta);
-  setValue(key,next);
-}
-function directEdit(key,id){
-  const n=Number($(id).value);
-  if(!Number.isFinite(n)||n<0){renderSelected();notify('Escribe un número válido.');return}
-  setValue(key,n);
-}
-function saveChoice(key,value){
-  ensureRecord()[key]=value;
-  if(persist()){renderStatsAndHistory();$('saveState').textContent='Guardado';}
-}
-function saveNoteDebounced(){
-  $('saveState').textContent='Guardando…';
-  clearTimeout(noteTimer);
-  noteTimer=setTimeout(()=>{
-    ensureRecord().note=$('note').value.slice(0,2000);
-    if(persist()){$('saveState').textContent='Guardado';renderStatsAndHistory()}
-  },350);
-}
-
-function cigaretteStatus(used,cap){
-  if(cap===0)return used===0?'Meta de hoy: 0. Cada impulso que pase sin fumar cuenta.':'Registrado por encima de la meta. No borres el dato: continúa desde este momento.';
-  if(used===0)return 'Llevas 0. Si puedes quedarte ahí, mejor: no tienes que fumar para cumplir.';
-  if(used<cap)return 'Vas por debajo del máximo. No completes la diferencia.';
-  if(used===cap)return 'Llegaste al máximo de hoy. La meta ahora es no sumar otro.';
-  return 'Pasaste el máximo. El dato se queda registrado sin juicio; el siguiente cigarro no está “perdido de antemano”.';
-}
-function colaStatus(used,cap){
-  if(cap===0)return used===0?'Meta alcanzada: 0 ml.':'Registrado por encima de la meta de hoy. Continúa sin compensar ni castigarte.';
-  if(used<cap)return 'Estás por debajo del máximo. No tienes que terminar lo que “falta”.';
-  if(used===cap)return 'Llegaste al máximo de hoy.';
-  return 'Superaste el máximo. Regístralo tal cual y retoma desde la siguiente decisión.';
-}
-function trackerHTML(t){
-  const c=val('cigs'),co=val('cola'),w=val('water'),s=val('sleep');
-  return `
-  <div class="tracker">
-    <div class="tracker-head"><div class="tracker-title">🚭 Cigarros</div><div class="target">máximo ${t.cigs}</div></div>
-    <div class="bigvalue">${c} <span class="unit">cigarros</span></div>
-    <div class="stepper"><button class="soft" onclick="adjust('cigs',-1)">− 1</button><button onclick="adjust('cigs',1)">+ 1</button></div>
-    <div class="inline-edit"><input id="editCigs" type="number" min="0" step="1" inputmode="numeric" value="${c}"><button class="alt" onclick="directEdit('cigs','editCigs')">Corregir</button></div>
-    <p class="statusline">${cigaretteStatus(c,t.cigs)}</p>
-  </div>
-
-  <div class="tracker">
-    <div class="tracker-head"><div class="tracker-title">💧 Agua simple</div><div class="target">meta ${t.water} ml</div></div>
-    <div class="bigvalue">${w} <span class="unit">ml</span></div>
-    <div class="stepper four">
-      <button class="soft" onclick="adjust('water',-100)">−100</button>
-      <button onclick="adjust('water',100)">+100</button>
-      <button onclick="adjust('water',250)">+250</button>
-      <button onclick="adjust('water',500)">+500</button>
-    </div>
-    <div class="inline-edit"><input id="editWater" type="number" min="0" step="10" inputmode="numeric" value="${w}"><button class="alt" onclick="directEdit('water','editWater')">Poner ml</button></div>
-    <p class="statusline">${w>=t.water?'Meta de agua alcanzada.':`Te faltan ${t.water-w} ml para la meta práctica de hoy.`}</p>
-  </div>
-
-  <div class="tracker">
-    <div class="tracker-head"><div class="tracker-title">🥤 Coca-Cola</div><div class="target">máximo ${t.cola} ml</div></div>
-    <div class="bigvalue">${co} <span class="unit">ml</span></div>
-    <div class="stepper four">
-      <button class="soft" onclick="adjust('cola',-100)">−100</button>
-      <button onclick="adjust('cola',100)">+100</button>
-      <button onclick="adjust('cola',250)">+250</button>
-      <button onclick="adjust('cola',355)">+355</button>
-    </div>
-    <div class="inline-edit"><input id="editCola" type="number" min="0" step="10" inputmode="numeric" value="${co}"><button class="alt" onclick="directEdit('cola','editCola')">Poner ml</button></div>
-    <p class="statusline">${colaStatus(co,t.cola)}</p>
-  </div>
-
-  <div class="tracker">
-    <div class="tracker-head"><div class="tracker-title">🌙 Sueño de la noche anterior</div><div class="target">mínimo ${fmtHours(t.sleep)}</div></div>
-    <div class="bigvalue">${fmtHours(s)} <span class="unit">registradas</span></div>
-    <div class="stepper"><button class="soft" onclick="adjust('sleep',-0.25)">− 15 min</button><button onclick="adjust('sleep',0.25)">+ 15 min</button></div>
-    <div class="inline-edit"><input id="editSleep" type="number" min="0" max="24" step="0.25" inputmode="decimal" value="${s}"><button class="alt" onclick="directEdit('sleep','editSleep')">Corregir</button></div>
-    <p class="statusline">${s>=t.sleep?'Meta mínima alcanzada.':`Faltaron ${fmtHours(t.sleep-s)} respecto a la meta de esta fecha.`}</p>
-  </div>`;
-}
-function fmtHours(h){
-  h=Math.max(0,Number(h)||0);
-  const whole=Math.floor(h),mins=Math.round((h-whole)*60);
-  if(mins===0)return whole+' h';
-  return whole+' h '+mins+' min';
-}
-function formatDateLong(s){
-  try{return parseDate(s).toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}catch(e){return s}
-}
-function renderHeader(){
-  const d=Math.max(1,dayNumber(today()));
-  $('daybadge').textContent=d<=90?'Día '+d+' de 90':'90 días completados · mantenimiento';
-  $('phase').textContent=d<=30?'Etapa 1 · Romper el ciclo':d<=60?'Etapa 2 · Reentrenar mi mente':'Etapa 3 · Mantener mi libertad';
-  $('bar').style.width=Math.min(100,Math.max(0,d/90*100))+'%';
-  $('daytext').textContent='Hoy: '+formatDateLong(today())+' · '+Math.min(90,Math.max(0,d))+' de 90 días transcurridos';
-}
-function renderSelected(){
-  const t=targets();
-  $('logDate').max=today();
-  $('logDate').value=selectedDate;
-  $('nextDate').disabled=selectedDate>=today();
-  $('registerTitle').textContent=selectedDate===today()?'Registro de hoy':'Registro de '+formatDateLong(selectedDate);
-  $('trackers').innerHTML=trackerHTML(t);
-  const x=getRecord();
-  $('chips').checked=!!x.chips;
-  $('sugar').checked=!!x.sugar;
-  $('mood').value=x.mood||'';
-  $('note').value=x.note||'';
-  $('goals').innerHTML=`<div class="grid">
-    <div class="stat"><small>🚭 Cigarros · máximo</small><strong>${t.cigs}</strong></div>
-    <div class="stat"><small>🥤 Coca-Cola · máximo</small><strong>${t.cola} ml</strong></div>
-    <div class="stat"><small>💧 Agua simple · meta</small><strong>${t.water} ml</strong></div>
-    <div class="stat"><small>🌙 Sueño · mínimo</small><strong>${fmtHours(t.sleep)}</strong></div>
-  </div><p class="help">🥔 Frituras: ${t.chips}.</p>`;
-  $('saveState').textContent='Guardado automático activo';
-}
-function renderStatsAndHistory(){
-  const entries=Object.entries(data.days);
-  const withCigs=entries.filter(([,x])=>x&&Number.isFinite(Number(x.cigs)));
-  const water=entries.reduce((sum,[,x])=>sum+(Number(x?.water)||0),0);
-  $('stats').innerHTML=`<div class="stat"><small>Días con algún registro</small><strong>${entries.length}</strong></div>
-  <div class="stat"><small>Antojos observados</small><strong>${data.urges.length}</strong></div>
-  <div class="stat"><small>Días registrados con 0 cigarros</small><strong>${withCigs.filter(([,x])=>Number(x.cigs)===0).length}</strong></div>
-  <div class="stat"><small>Agua registrada</small><strong>${(water/1000).toFixed(1)} L</strong></div>`;
-
-  const recent=entries.sort((a,b)=>b[0].localeCompare(a[0])).slice(0,20);
-  $('recent').innerHTML=recent.length?recent.map(([date,v])=>`<div class="history"><b>${esc(date)}</b> · ${Number(v.cigs)||0} cigarros · ${Number(v.cola)||0} ml refresco · ${Number(v.water)||0} ml agua · ${fmtHours(Number(v.sleep)||0)} sueño <button class="soft" style="float:right;padding:6px 9px" onclick="openPast('${date}')">Editar</button></div>`).join(''):'<p class="help">Todavía no hay días registrados.</p>';
-
-  $('urges').innerHTML=data.urges.length?data.urges.slice(-20).reverse().map(u=>`<div class="history"><b>${esc(u.type)}</b> · ${esc(u.date)}<br>${esc(u.trigger)} · intensidad ${u.before} → ${u.after}<br>${esc(u.outcome)}<br><span class="muted">${esc(u.thought)}</span></div>`).join(''):'<p class="help">Aquí verás qué activa tus antojos y qué estrategias funcionan.</p>';
-}
-function renderPlan(){
-  const t=targets(today());
-  $('startDate').value=data.start;
-  $('planToday').innerHTML=`<p class="good"><strong>Hoy, día ${Math.max(1,t.d)}:</strong> máximo ${t.cigs} cigarros, máximo ${t.cola} ml de Coca-Cola, meta ${t.water} ml de agua simple y mínimo ${fmtHours(t.sleep)} de sueño.</p>`;
-}
-function renderAll(){renderHeader();renderSelected();renderStatsAndHistory();renderPlan()}
-function selectDate(v){
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(v))return;
-  if(v>today()){notify('No puedes registrar un día futuro.');$('logDate').value=selectedDate;return}
-  selectedDate=v;renderSelected();
-}
-function shiftDate(n){
-  const d=parseDate(selectedDate);d.setDate(d.getDate()+n);
-  const v=isoDate(d);
-  if(v>today())return;
-  selectedDate=v;renderSelected();
-}
-function goToday(){selectedDate=today();renderSelected()}
-function openPast(date){selectedDate=date;tab('home');renderSelected()}
-function tab(id){
-  document.querySelectorAll('.page').forEach(e=>e.classList.add('hide'));
-  $(id).classList.remove('hide');
-  document.querySelectorAll('nav button').forEach(e=>e.classList.remove('active'));
-  $('nav-'+id).classList.add('active');
-  renderAll();
-  window.scrollTo(0,0);
-}
-function changeStart(){
-  const v=$('startDate').value;
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(v)){notify('Selecciona una fecha válida');return}
-  data.start=v;
-  if(persist()){renderAll();notify('Fecha de inicio actualizada')}
-}
-let timer=null,remaining=300;
-function startTimer(){
-  clearInterval(timer);remaining=300;showClock();
-  timer=setInterval(()=>{remaining--;showClock();if(remaining<=0){clearInterval(timer);timer=null;notify('Pasaron cinco minutos. ¿Cómo está el antojo ahora?')}},1000)
-}
-function showClock(){$('clock').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0')}
-function saveUrge(){
-  data.urges.push({date:new Date().toLocaleString('es-MX'),type:$('urgeType').value,trigger:$('trigger').value,thought:$('thought').value.slice(0,1000),before:Number($('before').value),after:Number($('after').value),outcome:$('outcome').value});
-  if(persist()){renderStatsAndHistory();notify('Antojo registrado. Gracias por observarlo sin juzgarte.');$('thought').value=''}
-}
-function exportData(){
-  const b=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),url=URL.createObjectURL(b),a=document.createElement('a');
-  a.href=url;a.download='renacer-respaldo-'+today()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)
-}
-async function importData(e){
-  const f=e.target.files[0];if(!f)return;
-  try{
-    const x=JSON.parse(await f.text());
-    if(typeof x.start!=='string'||!x.days||typeof x.days!=='object'||Array.isArray(x.days)||!Array.isArray(x.urges))throw Error();
-    if(!confirm('¿Reemplazar los registros de este navegador con el respaldo seleccionado?'))return;
-    data=x;if(persist()){selectedDate=today();renderAll();notify('Respaldo importado')}
-  }catch(err){notify('El archivo no parece un respaldo válido de RENACER')}
-  finally{e.target.value=''}
-}
-setInterval(()=>{
-  const now=today();
-  if(now!==lastToday){
-    const wasOnCurrent=selectedDate===lastToday;
-    lastToday=now;
-    if(wasOnCurrent)selectedDate=now;
-    renderAll();
-    notify('Comenzó un nuevo día. El anterior quedó guardado y sigue editable.');
-  }
-},60000);
-
-renderAll();
+function dayNumber(date=today()){return Math.floor((parseDate(date)-parseDate(START))/86400000)+1}
+function targets(date=selectedDate){const d=Math.max(1,dayNumber(date));const stage=Math.floor((d-1)/4);const cigs=Math.max(0,4-stage*.5);const cola=Math.max(0,1000-stage*100);const water=[1200,1400,1600,1800,2000][Math.min(4,stage)]||2000;const sleep=Math.min(7,6+stage*.25);return{d,cigs,cola,water,sleep}}
+function val(k){const x=data.days[selectedDate];return x&&Number.isFinite(Number(x[k]))?Number(x[k]):0}function getRecord(){return data.days[selectedDate]||{}}function ensureRecord(){if(!data.days[selectedDate])data.days[selectedDate]={};return data.days[selectedDate]}
+function setValue(k,v){if(today()<START)return;v=Number(v);if(!Number.isFinite(v)||v<0)return;if(k==='cigs')v=Math.round(v*2)/2;if(k==='sleep')v=Math.min(24,Math.round(v*4)/4);if(k==='water'||k==='cola')v=Math.round(v);ensureRecord()[k]=v;if(persist()){renderAll();notify('Guardado automáticamente 🦋')}}
+function adjust(k,d){setValue(k,Math.max(0,val(k)+d))}function directEdit(k,id){const n=Number($(id).value);if(!Number.isFinite(n)||n<0){notify('Escribe un número válido');return}setValue(k,n)}
+function saveChoice(k,v){if(today()<START)return;ensureRecord()[k]=v;if(persist())renderStats()}function saveNoteDebounced(){if(today()<START)return;$('saveState').textContent='Guardando…';clearTimeout(noteTimer);noteTimer=setTimeout(()=>{ensureRecord().note=$('note').value.slice(0,2000);if(persist()){$('saveState').textContent='Guardado';renderStats()}},350)}
+function fmtCig(n){return Number.isInteger(n)?String(n):String(n).replace('.5','½')}function fmtHours(h){h=Math.max(0,Number(h)||0);const a=Math.floor(h),m=Math.round((h-a)*60);return m?a+' h '+m+' min':a+' h'}
+function cigStatus(used,limit){if(used<limit)return`Llevas ${fmtCig(used)}. Límite programado: ${fmtCig(limit)}. No pases de ese número; si acabas con menos, no compenses.`;if(used===limit)return'Llegaste al límite programado de hoy. No sumes otro.';return'Superaste el límite. Déjalo registrado tal cual y vuelve al plan desde este momento.'}
+function trackerHTML(t){const c=val('cigs'),co=val('cola'),w=val('water'),s=val('sleep');return`<div class="tracker"><div class="tracker-head"><div class="tracker-title">🚭 Cigarros</div><div class="target">límite ${fmtCig(t.cigs)}</div></div><div class="bigvalue">${fmtCig(c)} <span class="unit">cigarros</span></div><div class="stepper"><button class="soft" onclick="adjust('cigs',-.5)">− ½</button><button onclick="adjust('cigs',.5)">+ ½</button></div><div class="inline-edit"><input id="editCigs" type="number" min="0" step="0.5" value="${c}"><button class="alt" onclick="directEdit('cigs','editCigs')">Corregir</button></div><p class="statusline">${cigStatus(c,t.cigs)}</p></div>
+<div class="tracker"><div class="tracker-head"><div class="tracker-title">💧 Agua simple</div><div class="target">meta ${t.water} ml</div></div><div class="bigvalue">${w} <span class="unit">ml</span></div><div class="stepper four"><button class="soft" onclick="adjust('water',-100)">−100</button><button onclick="adjust('water',100)">+100</button><button onclick="adjust('water',250)">+250</button><button onclick="adjust('water',500)">+500</button></div><div class="inline-edit"><input id="editWater" type="number" min="0" step="10" value="${w}"><button class="alt" onclick="directEdit('water','editWater')">Poner ml</button></div><p class="statusline">${w>=t.water?'Meta alcanzada.':`Faltan ${t.water-w} ml para la meta de hoy.`}</p></div>
+<div class="tracker"><div class="tracker-head"><div class="tracker-title">🥤 Coca-Cola</div><div class="target">límite ${t.cola} ml</div></div><div class="bigvalue">${co} <span class="unit">ml</span></div><div class="stepper four"><button class="soft" onclick="adjust('cola',-100)">−100</button><button onclick="adjust('cola',100)">+100</button><button onclick="adjust('cola',250)">+250</button><button onclick="adjust('cola',355)">+355</button></div><div class="inline-edit"><input id="editCola" type="number" min="0" step="10" value="${co}"><button class="alt" onclick="directEdit('cola','editCola')">Poner ml</button></div><p class="statusline">${co<t.cola?`Llevas ${co} ml. Límite de hoy: ${t.cola} ml. No tienes que completar la diferencia.`:co===t.cola?'Llegaste al límite de hoy.':'Superaste el límite; deja el dato real y retoma el plan.'}</p></div>
+<div class="tracker"><div class="tracker-head"><div class="tracker-title">🌙 Sueño</div><div class="target">mínimo ${fmtHours(t.sleep)}</div></div><div class="bigvalue">${fmtHours(s)}</div><div class="stepper"><button class="soft" onclick="adjust('sleep',-.25)">− 15 min</button><button onclick="adjust('sleep',.25)">+ 15 min</button></div><div class="inline-edit"><input id="editSleep" type="number" min="0" max="24" step="0.25" value="${s}"><button class="alt" onclick="directEdit('sleep','editSleep')">Corregir</button></div></div>`}
+function markMed(k){if(today()<START)return;const r=ensureRecord();if(r[k])return;r[k]={taken:true,time:selectedDate===today()?new Date().toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'}):null,late:selectedDate!==today()};if(persist()){renderMeds();notify('Quedó registrado')}}
+function clearMed(k){const r=ensureRecord();if(!r[k])return;if(confirm('¿Quitar esta marca? Hazlo solo si la registraste por error.')){delete r[k];persist();renderMeds();notify('Marca corregida')}}
+function medCard(k,name){const m=getRecord()[k];if(m&&m.taken){const detail=m.time?'Sí · '+m.time:'Sí · registrado después';return`<div class="med"><div class="med-top"><div class="med-name">${name}</div><div class="med-status done">✓ ${detail}</div></div><button class="soft" onclick="clearMed('${k}')">Corregir marca</button></div>`}return`<div class="med"><div class="med-top"><div class="med-name">${name}</div><div class="med-status">No registrado</div></div><button onclick="markMed('${k}')">✓ Marcar que ya lo tomé</button></div>`}
+function renderMeds(){$('meds').innerHTML=medCard('citalopram','Citalopram')+medCard('valproato','Valproato de magnesio')}
+function formatDate(s){return parseDate(s).toLocaleDateString('es-MX',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
+function renderHeader(){const before=today()<START,d=dayNumber(today());$('prepBox').classList.toggle('hide',!before);$('dailySection').classList.toggle('hide',before);$('daybadge').textContent=before?'Comienza mañana':d<=90?'Día '+d+' de 90':'Mantenimiento';$('headline').textContent=before?'Preparación':'Mi plan de hoy';$('phase').textContent=before?'Inicio limpio · sin registros anteriores':d<=32?'Etapa 1 · Reducción gradual':d<=60?'Etapa 2 · Mantener cero':'Etapa 3 · Consolidar';$('bar').style.width=before?'0%':Math.min(100,d/90*100)+'%';$('daytext').textContent=before?'Inicio: miércoles 21 de octubre de 2026':'Hoy: '+formatDate(today())}
+function renderSelected(){const before=today()<START;$('logDate').min=START;$('logDate').max=before?START:today();$('logDate').value=selectedDate;$('logDate').disabled=before;$('nextDate').disabled=before||selectedDate>=today();if(before)return;const t=targets();$('registerTitle').textContent=selectedDate===today()?'Registro de hoy':'Registro de '+formatDate(selectedDate);$('trackers').innerHTML=trackerHTML(t);renderMeds();const x=getRecord();$('chips').checked=!!x.chips;$('sugar').checked=!!x.sugar;$('mood').value=x.mood||'';$('note').value=x.note||'';$('saveState').textContent='Guardado automático activo'}
+function renderStats(){const entries=Object.entries(data.days);const water=entries.reduce((s,[,x])=>s+(Number(x.water)||0),0);$('stats').innerHTML=`<div class="stat"><small>Días con registro</small><strong>${entries.length}</strong></div><div class="stat"><small>Antojos registrados</small><strong>${data.urges.length}</strong></div><div class="stat"><small>Días en 0 cigarros</small><strong>${entries.filter(([,x])=>Number(x.cigs)===0&&x.cigs!==undefined).length}</strong></div><div class="stat"><small>Agua registrada</small><strong>${(water/1000).toFixed(1)} L</strong></div>`;const recent=entries.sort((a,b)=>b[0].localeCompare(a[0])).slice(0,20);$('recent').innerHTML=recent.length?recent.map(([d,v])=>`<div class="history"><b>${esc(d)}</b> · ${fmtCig(Number(v.cigs)||0)} cig · ${Number(v.cola)||0} ml Coca-Cola · ${Number(v.water)||0} ml agua · ${fmtHours(Number(v.sleep)||0)} sueño</div>`).join(''):'<p class="help">Todavía no hay registros de esta nueva etapa.</p>';$('urges').innerHTML=data.urges.length?data.urges.slice(-20).reverse().map(u=>`<div class="history"><b>${esc(u.type)}</b> · ${esc(u.date)}<br>${esc(u.trigger)} · ${u.before} → ${u.after}<br>${esc(u.outcome)}</div>`).join(''):'<p class="help">Todavía no hay episodios registrados.</p>'}
+function renderPlan(){const t=targets(today()<START?START:today());$('planToday').innerHTML=`<p class="good"><strong>${today()<START?'Mañana':'Hoy'}, día ${t.d}:</strong> límite ${fmtCig(t.cigs)} cigarros, límite ${t.cola} ml de Coca-Cola, meta ${t.water} ml de agua y mínimo ${fmtHours(t.sleep)} de sueño.</p>`}
+function renderAll(){renderHeader();renderSelected();renderStats();renderPlan()}
+function selectDate(v){if(v<START||v>today())return;selectedDate=v;renderSelected()}function shiftDate(n){if(today()<START)return;const d=parseDate(selectedDate);d.setDate(d.getDate()+n);const v=isoDate(d);if(v<START||v>today())return;selectedDate=v;renderSelected()}function goToday(){if(today()<START)return;selectedDate=today();renderSelected()}
+function tab(id){document.querySelectorAll('.page').forEach(e=>e.classList.add('hide'));$(id).classList.remove('hide');document.querySelectorAll('nav button').forEach(e=>e.classList.remove('active'));$('nav-'+id).classList.add('active');renderAll();window.scrollTo(0,0)}
+let timer=null,remaining=300;function startTimer(){clearInterval(timer);remaining=300;showClock();timer=setInterval(()=>{remaining--;showClock();if(remaining<=0){clearInterval(timer);timer=null;notify('Pasaron cinco minutos. ¿Cómo está el antojo?')}},1000)}function showClock(){$('clock').textContent=String(Math.floor(remaining/60)).padStart(2,'0')+':'+String(remaining%60).padStart(2,'0')}
+function saveUrge(){if(today()<START){notify('El registro empieza mañana');return}data.urges.push({date:new Date().toLocaleString('es-MX'),type:$('urgeType').value,trigger:$('trigger').value,before:Number($('before').value),after:Number($('after').value),outcome:$('outcome').value,thought:$('thought').value.slice(0,1000)});if(persist()){renderStats();$('thought').value='';notify('Antojo registrado')}}
+function exportData(){const b=new Blob([JSON.stringify(data,null,2)],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='renacer-'+today()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}async function importData(e){const f=e.target.files[0];if(!f)return;try{const x=JSON.parse(await f.text());if(x.start!==START||!x.days||!Array.isArray(x.urges))throw Error();if(!confirm('¿Reemplazar los registros de esta nueva etapa?'))return;data=x;persist();renderAll();notify('Respaldo importado')}catch(err){notify('Este archivo no corresponde a la nueva etapa de RENACER')}finally{e.target.value=''}}
+setInterval(()=>{const n=today();if(n!==lastToday){lastToday=n;if(n>=START)selectedDate=n;renderAll();notify('Comenzó un nuevo día. Tu registro anterior quedó guardado.')}},60000);renderAll();
 </script>
-</body>
-</html>
+</body></html>
