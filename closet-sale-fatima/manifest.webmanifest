@@ -1,8 +1,8 @@
 {
   "id": "./",
-  "name": "CLOSET SALE FÁTIMA",
-  "short_name": "Closet Fátima",
-  "description": "Control de bolsas y entregas por clóset",
+  "name": "Closet Sale",
+  "short_name": "Closet Sale",
+  "description": "Control de bolsas, clósets y entregas",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
