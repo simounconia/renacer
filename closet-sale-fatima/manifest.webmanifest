@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "CLOSET SALE FÁTIMA",
+  "short_name": "Closet Fátima",
+  "description": "Control de bolsas y entregas por clóset",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f5fb",
+  "theme_color": "#6139ab",
+  "icons": [
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
