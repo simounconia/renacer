@@ -7,6 +7,18 @@
 @media(max-width:870px){.stats{grid-template-columns:repeat(3,minmax(0,1fr))}.tools{flex:1 1 100%}}
 @media(max-width:600px){.page{padding:9px 9px 40px}.hero{padding:19px 16px}.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}.stat{padding:10px 12px}.stat .n{font-size:22px}.filterbar{padding:12px}.closet-filter,.status-filter{flex:1 1 145px}.main{padding:11px}.rowbag{grid-template-columns:1fr}.bag-actions{justify-content:start}.twocol{grid-template-columns:1fr}.tab{padding:12px 10px;font-size:12px}}
 @media print{body{background:white}.hero{background:white;color:var(--dark);border:1px solid var(--border)}.hero p{color:var(--muted)}.hero-actions,.filterbar,.tabs,.btn,.notice,.foot{display:none!important}.page{padding:0}.work{border:0}.buyer,.closet{break-inside:avoid}}
+
+body.cloud-gated #stats,body.cloud-gated main.work{display:none}
+.cloud-panel{margin:13px 0;padding:16px;border:1px solid #d9c9ee;border-radius:13px;background:#fff}
+.sync-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:9px}
+.sync-heading strong{font-size:15px;color:#4d298f}
+#cloudStatus{font-size:12px;flex:1 1 300px;text-align:right}
+.sync-form{display:flex;gap:9px;align-items:end;flex-wrap:wrap}
+.sync-form label{font-size:11px;font-weight:750;display:flex;flex-direction:column;gap:4px;flex:1 1 170px}
+.sync-form input{padding:9px 11px;border:1px solid #d5cce5;border-radius:9px;min-height:39px}
+.sync-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+#cloudEmail{font-size:12px;color:#5f596d;margin-right:auto}
+@media(max-width:600px){#cloudStatus{text-align:left}.sync-form .btn{flex:1 1 130px}}
 </style><meta name="theme-color" content="#6139ab">
 <meta name="application-name" content="Closet Sale Fátima">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -15,8 +27,9 @@
 <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon.svg">
 <link rel="apple-touch-icon" href="./icons/icon.svg">
 </head>
-<body><div class="page">
+<body class="cloud-gated"><div class="page">
 <header class="hero"><div><div class="kicker">Control sencillo de entregas</div><h1>🛍️ CLOSET SALE FÁTIMA</h1><p>Una bolsa por registro · Todo agrupado por compradora y por clóset</p></div><div class="hero-actions"><button class="btn hero-btn" id="addBag">＋ Nueva bolsa</button><button class="btn hero-outline" id="addCloset">＋ Nuevo clóset</button></div></header>
+<section id="cloudPanel" aria-label="Sincronización privada" class="cloud-panel"></section>
 <section id="stats" class="stats" aria-label="Resumen"></section>
 <main class="work"><div class="filterbar">
 <div class="field search"><label for="search">Buscar compradora, clóset o bolsa</label><input id="search" type="search" list="names" placeholder="Escribe el nombre de la compradora..." autocomplete="off"><datalist id="names"></datalist></div>
@@ -25,7 +38,7 @@
 <div class="tools"><button class="btn" id="reset">Limpiar</button><button class="btn" id="backup">⬇ Respaldar</button><button class="btn" id="csv">Excel / CSV</button><button class="btn" id="restore">⬆ Restaurar</button><input id="restoreFile" class="file-input" type="file" accept="application/json,.json"></div></div>
 <nav class="tabs" aria-label="Vistas"><button data-tab="buyers" class="tab active">Por compradora</button><button data-tab="closets" class="tab">Por clóset</button><button data-tab="all" class="tab">Todas las bolsas</button><button data-tab="manage" class="tab">Administrar clósets</button><button data-tab="review" class="tab">Revisar nombres <span id="reviewCount"></span></button></nav>
 <section class="main" id="content" aria-live="polite"></section></main>
-<div class="notice">💾 Los cambios se guardan automáticamente en <strong>este navegador</strong>. Usa <strong>Respaldar</strong> para guardar una copia y <strong>Restaurar</strong> si cambias de equipo o navegador. El Excel / CSV sirve como reporte, no se sincroniza con esta aplicación. Si comienzas en un dispositivo nuevo, primero importa tu archivo de respaldo privado.</div>
+<div class="notice">☁️ Las bolsas se sincronizan automáticamente cuando inicias sesión con el <strong>mismo correo y contraseña</strong> en el celular y la PC. Cada cambio también se guarda localmente. Si la red falla, se conserva en el dispositivo hasta que pueda sincronizarse. <strong>Respaldar</strong> crea una copia adicional.</div>
 <div class="foot">Los registros representan bolsas recibidas y pendientes de entrega a sus compradoras.</div>
 </div>
 <dialog id="bagDialog"><form id="bagForm"><div class="dialog-head"><h2 id="bagTitle">Agregar bolsa</h2><p>Agrega aquí solamente bolsas que ya están físicamente recibidas.</p></div><div class="dialog-body"><input id="bagId" type="hidden">
@@ -51,7 +64,7 @@ const valid=d=>!!d&&Array.isArray(d.bags)&&Array.isArray(d.closets)&&d.bags.ever
 let state=initial;let tab='buyers';
 try{let saved=JSON.parse(localStorage.getItem(KEY));if(valid(saved)){state=saved;let ids=new Set(state.bags.map(b=>b.id));let byId=new Map(initial.bags.map(b=>[b.id,b]));for(let item of initial.bags){if(!ids.has(item.id)){state.bags.push(item);ids.add(item.id)}}for(let b of state.bags){delete b.arrivedAt;const orig=byId.get(b.id);if(!('deliveredAt' in b))b.deliveredAt='';}state.version=2;}}
 catch(e){state=initial}
-function save(){state.lastUpdated=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){alert('No fue posible guardar los cambios. Descarga un respaldo antes de salir.')}render()}
+function save(){state.lastUpdated=new Date().toISOString();try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){alert('No fue posible guardar los cambios. Descarga un respaldo antes de salir.')}render();window.fatimaSync?.onLocalChange?.()}
 function count(list){let delivered=list.filter(b=>!!b.deliveredAt).length;return{total:list.length,delivered,pending:list.length-delivered}}
 function stats(){let c=count(state.bags);$('#stats').innerHTML=`<div class="stat brand"><strong class="n">${c.total}</strong><span class="label">Bolsas registradas</span></div><div class="stat"><strong class="n">${new Set(state.bags.map(b=>norm(b.buyer))).size}</strong><span class="label">Compradoras</span></div><div class="stat brand"><strong class="n">${state.closets.length}</strong><span class="label">Clósets</span></div><div class="stat"><strong class="n">${c.pending}</strong><span class="label">Por recoger</span></div><div class="stat positive"><strong class="n">${c.delivered}</strong><span class="label">Entregadas a compradoras</span></div>`;$('#reviewCount').textContent='('+state.bags.filter(b=>clean(b.review)).length+')'}
 function closetByName(s){return state.closets.find(c=>c.name===s)}
@@ -80,6 +93,7 @@ $('#bagForm').addEventListener('submit',ev=>{ev.preventDefault();let id=$('#bagI
 $('#closetForm').addEventListener('submit',ev=>{ev.preventDefault();let id=$('#closetId').value,name=clean($('#closetName').value),seller=clean($('#closetSeller').value),notes=clean($('#closetNotes').value);if(!name)return;if(state.closets.some(c=>c.id!==id&&norm(c.name)===norm(name)))return alert('Ya existe un clóset con ese nombre.');if(id){let c=state.closets.find(c=>c.id===id);if(!c)return;let old=c.name;Object.assign(c,{name,seller,notes});state.bags.forEach(b=>{if(b.closet===old)b.closet=name})}else{let i=1,idNew;do{idNew='NV'+String(i++).padStart(3,'0')}while(state.closets.some(c=>c.id===idNew));state.closets.push({id:idNew,name,seller,notes})}$('#closetDialog').close();save()});
 $('#renameForm').addEventListener('submit',ev=>{ev.preventDefault();let old=$('#renameOld').value,newName=clean($('#renameNew').value);if(!newName)return;state.bags.filter(b=>norm(b.buyer)===norm(old)).forEach(b=>b.buyer=newName);$('#renameDialog').close();save()});
 $('#content').addEventListener('click',ev=>{let el=ev.target.closest('[data-action]');if(!el)return;let action=el.dataset.action,b=state.bags.find(b=>b.id===el.dataset.id);if(action==='newCloset')return openCloset();if(action==='newForCloset')return openBag(null,el.dataset.closet);if(action==='editCloset')return openCloset(el.dataset.closetid);if(action==='deleteCloset'){let c=state.closets.find(c=>c.id===el.dataset.closetid);if(!c||state.bags.some(b=>b.closet===c.name))return;if(confirm('¿Eliminar clóset vacío «'+c.name+'»?')){state.closets=state.closets.filter(x=>x!==c);save()}return}if(action==='editBag')return openBag(el.dataset.id);if(action==='rename'){let name=el.dataset.buyer;$('#renameOld').value=name;$('#renameNew').value=name;return $('#renameDialog').showModal()}if(action==='deliverAll'){let name=norm(el.dataset.buyer),eligible=state.bags.filter(b=>norm(b.buyer)===name&&!b.deliveredAt);if(!eligible.length)return;let d=today();eligible.forEach(b=>b.deliveredAt=d);return save()}if(!b)return;if(action==='deliver'){if(!b.deliveredAt){b.deliveredAt=today();save()}}if(action==='undo'){if(confirm('¿Deshacer la entrega de esta bolsa?')){b.deliveredAt='';save()}}});
+window.fatimaApp={get:()=>JSON.parse(JSON.stringify(state)),replace:d=>{if(!valid(d))throw Error('Inventario inválido');state=JSON.parse(JSON.stringify(d));localStorage.setItem(KEY,JSON.stringify(state));render()}};
 render();
 })();
 </script><script>
@@ -87,4 +101,6 @@ if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.
   window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js').catch(() => {}));
 }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.119.0/dist/umd/supabase.js" defer></script>
+<script src="./sync.js" defer></script>
 </body></html>
